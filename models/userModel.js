@@ -2,8 +2,15 @@ const { Schema, model } = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
 const userSchema = new Schema({
-  name: { type: String, require: [true, "This field is required"] },
-  gender: { type: String },
+  name: { type: String, required: [true, "Field name is required"] },
+  gender: {
+    type: String,
+    validate: {
+      validator: (gender) => gender === "male" || gender === "female",
+      message: "Incorrect or missing gender",
+    },
+    required: [true, "Field gender is required"],
+  },
   position: { type: String },
   role: {
     type: Schema.Types.ObjectId,

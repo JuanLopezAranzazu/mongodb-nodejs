@@ -2,7 +2,14 @@ const { Schema, model } = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 
 const roleSchema = new Schema({
-  name: { type: String, require: [true, "This field is required"] },
+  name: {
+    type: String,
+    validate: {
+      validator: (name) => name.length > 2,
+      message: "The name must have more than 2 characters",
+    },
+    required: [true, "This field is required"],
+  },
   users: [
     {
       type: Schema.Types.ObjectId,

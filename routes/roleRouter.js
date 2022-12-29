@@ -1,5 +1,6 @@
 const express = require("express");
 const roleRouter = express.Router();
+const boom = require("@hapi/boom");
 // models
 const Role = require("./../models/roleModel");
 

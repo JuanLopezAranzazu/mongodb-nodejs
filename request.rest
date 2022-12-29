@@ -10,8 +10,8 @@ POST http://localhost:3001/users
 Content-Type: application/json
 
 {
-  "name": "employee",
-  "gender": "male",
+  "name": "ajpogaeogi",
+  "gender": "etqtq",
   "position": "programmer",
   "role": "63adbfb43717c409cdfeeb44"
 }
@@ -30,7 +30,7 @@ Content-Type: application/json
 
 ###
 
-DELETE  http://localhost:3001/users/63ac874b2af6e05a48fd3570
+DELETE  http://localhost:3001/users/63adc1203717c409cdfeeb57
 
 ### ROLES
 
@@ -42,5 +42,5 @@ POST http://localhost:3001/roles
 Content-Type: application/json
 
 {
-  "name": "employee"
+  "name": "q"
 }
