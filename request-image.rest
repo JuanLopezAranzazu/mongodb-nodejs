@@ -1,0 +1,11 @@
+GET http://localhost:3001/images
+
+###
+
+POST http://localhost:3001/images
+Content-Type: application/json
+
+{
+  "name": "anpadnba",
+  "url": "gjaegoeggywywy"
+}

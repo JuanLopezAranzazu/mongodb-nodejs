@@ -8,6 +8,9 @@ const config = {
     process.env.NODE_ENV === "test"
       ? process.env.MONGO_DB_URI_TEST
       : process.env.MONGO_DB_URI,
+  cloudName: process.env.CLOUD_NAME,
+  apiKey: process.env.API_KEY,
+  apiSecret: process.env.API_SECRET,
 };
 
 module.exports = { config };
