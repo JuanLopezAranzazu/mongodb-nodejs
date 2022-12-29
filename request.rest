@@ -1,0 +1,46 @@
+GET http://localhost:3001/users
+
+###
+
+GET http://localhost:3001/users/63adbe720df2d27df0d66e81
+
+###
+
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+  "name": "employee",
+  "gender": "male",
+  "position": "programmer",
+  "role": "63adbfb43717c409cdfeeb44"
+}
+
+###
+
+PUT http://localhost:3001/users/63adbf7c3717c409cdfeeb34
+Content-Type: application/json
+
+{
+  "name": "my user updated",
+  "gender": "male",
+  "position": "fullstack",
+  "role": "63adbfb43717c409cdfeeb44"
+}
+
+###
+
+DELETE  http://localhost:3001/users/63ac874b2af6e05a48fd3570
+
+### ROLES
+
+GET http://localhost:3001/roles
+
+###
+
+POST http://localhost:3001/roles
+Content-Type: application/json
+
+{
+  "name": "employee"
+}
