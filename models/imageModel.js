@@ -11,6 +11,7 @@ const imageSchema = new Schema({
     required: [true, "This field is required"],
   },
   url: { type: String },
+  cloudinary_id: { type: String },
 });
 
 imageSchema.set("toJSON", {

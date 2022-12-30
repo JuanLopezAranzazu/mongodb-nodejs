@@ -10,6 +10,8 @@ cloudinary.config({
 });
 // models
 const Image = require("./../models/imageModel");
+// multer
+const uploadImage = require("../tools/uploadImage");
 
 imageRouter.get("/", async (req, res, next) => {
   try {
@@ -20,24 +22,35 @@ imageRouter.get("/", async (req, res, next) => {
   }
 });
 
-imageRouter.post("/", async (req, res, next) => {
+// upload image
+imageRouter.post("/", uploadImage.single("image"), async (req, res, next) => {
   try {
     const { body } = req;
     console.log(body);
-    await cloudinary.uploader.upload(
-      "https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
-      { public_id: "olympic_flag" }
-    );
-    // generate url
-    const url = cloudinary.url("olympic_flag", {
-      width: 100,
-      height: 150,
-      Crop: "fill",
-    });
+    const result = await cloudinary.uploader.upload(req.file.path);
     // create image
-    const newImage = new Image({ name: "olympic_flag", url });
+    const newImage = new Image({
+      name: body.name,
+      url: result.secure_url,
+      cloudinary_id: result.public_id,
+    });
     await newImage.save();
-    res.status(201).json({ data: "Image created successfully" });
+    res.status(201).json({ data: newImage });
+  } catch (error) {
+    next(error);
+  }
+});
+
+// delete image
+imageRouter.delete("/:id", async (req, res, next) => {
+  try {
+    const { params } = req;
+    const image = await Image.findById(params.id);
+    // delete image from cloudinary
+    await cloudinary.uploader.destroy(image.cloudinary_id);
+    // delete image from db
+    await image.remove();
+    res.status(204).json({ data: image });
   } catch (error) {
     next(error);
   }

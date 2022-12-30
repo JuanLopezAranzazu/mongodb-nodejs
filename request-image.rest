@@ -2,10 +2,4 @@ GET http://localhost:3001/images
 
 ###
 
-POST http://localhost:3001/images
-Content-Type: application/json
-
-{
-  "name": "anpadnba",
-  "url": "gjaegoeggywywy"
-}
+DELETE http://localhost:3001/images/63af15e4cf09dfefb00b368b
